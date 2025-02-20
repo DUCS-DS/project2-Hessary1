@@ -77,6 +77,12 @@ for i in range(num_nodes):
     angle = radians(random.randint(0, 359))
     nodes.append(Node(x, y, speed, angle))
 
+def getx(node):
+    return node.x
+
+nodes = sorted(nodes, key = getx)   # merge sort - O(n * log(n)) [linearithmic]
+# nodes = selection_sort(nodes, key = getx)   # O(n**2)
+
 # the game loop: (press q to quit)
 quit = False
 while not quit:
@@ -99,7 +105,7 @@ while not quit:
 
     for i, node1 in enumerate(nodes):
         x1, y1 = node1.x, node1.y
-        for node2 in nodes[i + 1 :]:
+        for node2 in nodes[i + 1 : i + 20]:
             x2, y2 = node2.x, node2.y
             d_squared = (x1 - x2) ** 2 + (y1 - y2) ** 2
             if d_squared < thresh:
