@@ -80,7 +80,6 @@ for i in range(num_nodes):
 def getx(node):
     return node.x
 
-nodes = sorted(nodes, key = getx)   # merge sort - O(n * log(n)) [linearithmic]
 # nodes = selection_sort(nodes, key = getx)   # O(n**2)
 
 # the game loop: (press q to quit)
@@ -102,6 +101,8 @@ while not quit:
         node.move()
         node.reflect()
         node.draw()
+
+    nodes = sorted(nodes, key = getx)   # merge sort - O(n * log(n)) [linearithmic]
 
     for i, node1 in enumerate(nodes):
         x1, y1 = node1.x, node1.y
